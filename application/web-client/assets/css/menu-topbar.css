@@ -1,0 +1,12 @@
+/**
+*@Autor:Guilherme Sanches
+**/
+
+.menu-topbar li{
+    list-style-type: none;
+    display: inline;    
+}
+.menu-topbar li a{
+    text-decoration: none;
+    padding: 10px;
+}
