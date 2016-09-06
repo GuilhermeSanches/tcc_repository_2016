@@ -1,0 +1,16 @@
+{
+  "name": "client",
+  "version": "0.0.1",
+  "description": "Painel de gerenciamento de consumo de energia elétrica residencial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "angular-route": "^1.5.8",
+    "highcharts-ng": "0.0.12",
+    "materialize-css": "^0.97.7"
+  }
+}
