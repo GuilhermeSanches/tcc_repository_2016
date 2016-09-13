@@ -1,0 +1,29 @@
+{
+  "name": "API-TCC-2016",
+  "version": "1.0.0",
+  "description": "Gerenciador de Gastos com Energia Elétrica",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermesanches/projectlabvi.git"
+  },
+  "author": "Guilherme Sanches, Jéssica Adriele do Nascimento",
+  "license": "MIT",    
+  "dependencies": {
+    "body-parser": "~1.8.1",
+    "cookie-parser": "~1.3.3",
+    "cors": "^2.5.3",
+    "debug": "~2.0.0",
+    "express": "~4.9.0",
+    "express-myconnection": "^1.0.4",
+    "getmodule": "0.0.3",    
+    "morgan": "~1.3.0",
+    "mysql": "^2.6.1",
+    "json-gate": "^0.8.22",
+    "crypto": "*"
+  }
+    
+}

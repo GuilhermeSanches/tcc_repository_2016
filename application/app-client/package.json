@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "angular-md5": "^0.1.10",
     "angular-route": "^1.5.8",
     "highcharts-ng": "0.0.12",
     "materialize-css": "^0.97.7"

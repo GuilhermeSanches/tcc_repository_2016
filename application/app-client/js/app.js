@@ -1,7 +1,7 @@
-var App = window.angular.module('App', ['ngMaterial', 'ngRoute', 'bHighcharts']);
+var App = window.angular.module('App', ['ngMaterial', 'ngRoute', 'bHighcharts', 'serviceLogin', 'Interceptor', 'serviceHome', 'ngMd5', 'serviceHighcharts']);
 
 App.config(function ($routeProvider, $httpProvider, $mdThemingProvider) {
-    // $httpProvider.interceptors.push('TokenInterceptor');
+    $httpProvider.interceptors.push('TokenInterceptor');
     $mdThemingProvider.theme('docs-dark');
 
     $routeProvider
@@ -35,7 +35,7 @@ App.run(function ($rootScope, $location, $route, $window) {
 
     $rootScope.$on("$routeChangeStart", function (event, nextRoute, currentRoute) {
         if (nextRoute.access) {
-            if (nextRoute.access.requiredAuthentication && $window.localStorage.isLogado=='false') {
+            if (nextRoute.access.requiredAuthentication && $window.localStorage.isLogged == 'false' || !$window.localStorage.isLogged) {
                 $location.path("/login");
             }
         } else {
@@ -45,6 +45,6 @@ App.run(function ($rootScope, $location, $route, $window) {
 });
 
 
-App.value('API', 'http://localhost:8080');
+App.value('API', 'http://localhost:3000/api/v1');
 
 

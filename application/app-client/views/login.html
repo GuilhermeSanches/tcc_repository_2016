@@ -12,18 +12,18 @@
                     <h5 class="title-icon">LOGIN</h5>
                 </div>
                 <div class="input-field col s10 offset-s1">
-                    <input id="email" type="text" class="validate">
-                    <label for="email">Email</label>
+                    <input id="email" name="username" type="text" ng-model="user.username" class="validate">
+                    <label for="email">Usuário</label>
                 </div>
                 <div class="input-field col s10 offset-s1">
-                    <input id="password" type="password" class="validate">
+                    <input id="password" name="pass" type="password" ng-model="user.pass" class="validate">
                     <label for="password">Senha</label>
                 </div>
                 <div class="col s11">
                     <span class="signup"> <a ui-sref="signup" href="#/signup">Esqueceu sua senha</a> </span>
                 </div>
                 <div class=" button-submit col s12 l12">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Entrar
+                    <button ng-click="login(user)" class="btn waves-effect waves-light" type="submit" name="action">Entrar
                         <i class="material-icons right">send</i>
                     </button>
                 </div>

@@ -59,8 +59,7 @@ App.service('chartThemes', function ($timeout) {
                 backgroundColor: 'transparent',
                 events: {
                     load: function (chart) {
-                        $timeout(function () {
-                            console.log("teste");
+                        $timeout(function () {                            
                             chart.target.reflow();
                         }
                         );
