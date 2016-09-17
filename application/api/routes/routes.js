@@ -24,6 +24,20 @@ app.route('/api/v1/clients/:id')
     .get()
     .put();
 
+app.route('/api/v1/clients/:id/consumption')
+    .get(Auth.authorizationRequest,
+    function (req, res, next) {
+        Service.getService.exec(req, res, next, req.method, 'consumption');
+    })
+    .put(Auth.authorizationRequest,
+    function (req, res, next) {
+        Controller.getController.checkModel(req, res, next, 'consumption');
+    },
+    function (req, res, next) {
+        Service.getService.exec(req, res, next, req.method, 'consumption');
+    }
+    );
+
 app.route('/api/v1/clients/:id/history')
     .get(Auth.authorizationRequest,
     function (req, res, next) {

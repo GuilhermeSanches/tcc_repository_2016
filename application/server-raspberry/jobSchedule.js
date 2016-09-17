@@ -19,12 +19,23 @@ MongoClient.connect(url, function (err, db) {
                         console.log("No connection");
                     } else {
                         console.log("Connected");
-                        request.post('http://192.168.1.3:3000/api/v1/clients/1/history', { form: { data: results, time: new Date() } }, function (error, response, body) {
+                        request.post({
+                            headers: {
+                                'Authorization': 'a459d39cbf2f6ab43c054acf8902cda2'
+                            },
+                            uri: 'http://api-energymonitor.rhcloud.com/api/v1/clients/1/history',
+                            form: { data: results, time: new Date(), device: "123456" },
+                            method: 'POST'
+                        }, function (error, response, body) {                            
                             if (error) {
-                                console.log("erro: " + error);                                
+                                console.log("erro: " + error);
+                                process.exit();
                             }
                             if (!error && response.statusCode == 200) {
                                 console.log("salvou");
+                                process.exit();
+                            } else {                                
+                                process.exit();
                             }
                         });
                     }

@@ -1,4 +1,4 @@
-var App = window.angular.module('App', ['ngMaterial', 'ngRoute', 'bHighcharts', 'serviceLogin', 'Interceptor', 'serviceHome', 'ngMd5', 'serviceHighcharts']);
+var App = window.angular.module('App', ['ngMaterial', 'ngRoute', 'serviceLogin', 'Interceptor', 'serviceHome', 'ngMd5', 'angularMoment']);
 
 App.config(function ($routeProvider, $httpProvider, $mdThemingProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
@@ -29,10 +29,10 @@ App.config(function ($routeProvider, $httpProvider, $mdThemingProvider) {
 });
 
 
-App.run(function ($rootScope, $location, $route, $window) {
+App.run(function ($rootScope, $location, $route, $window, amMoment) {
     var nextPath = $location.path();
     var nextRoute = $route.routes[nextPath];
-
+    amMoment.changeLocale('ptBr');
     $rootScope.$on("$routeChangeStart", function (event, nextRoute, currentRoute) {
         if (nextRoute.access) {
             if (nextRoute.access.requiredAuthentication && $window.localStorage.isLogged == 'false' || !$window.localStorage.isLogged) {
@@ -45,6 +45,6 @@ App.run(function ($rootScope, $location, $route, $window) {
 });
 
 
-App.value('API', 'http://localhost:3000/api/v1');
+App.value('API', 'https://api-energymonitor.rhcloud.com/api/v1');
 
 

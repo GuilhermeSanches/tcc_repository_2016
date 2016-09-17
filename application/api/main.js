@@ -6,7 +6,7 @@ var App = function () {
     var self = this;
 
     this.setupVariables = function () {
-        self.ipaddress = process.env.ADDRESS || '127.0.0.1';
+        self.ipaddress = process.env.ADDRESS || '192.168.1.3';
         self.port = process.env.OPENSHIFT_NODEJS_PORT || process.env.NODEJS_PORT || 3000;
     };
 

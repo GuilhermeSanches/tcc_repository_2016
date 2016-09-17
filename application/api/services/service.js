@@ -46,6 +46,28 @@ var service = {
                     dao.commit(connection, res, result);
                 });
                 break;
+            case 'consumption':
+                dao.GET_CONSUMPTION(req, res, next, _feature, function (err, result, connection) {
+                    if (err) {
+                        dao.rollback(connection);
+                    }
+                    dao.commit(connection, res, result);
+                });
+                break;
+            default:
+                break;
+        }
+    },
+    PUT: function (req, res, next, _feature) {
+        switch (_feature) {
+            case 'consumption':
+                dao.PUT(req, res, next, _feature, function (err, result, connection) {
+                    if (err) {
+                        dao.rollback(connection);
+                    }
+                    dao.commit(connection, res, result);
+                });
+                break;
             default:
                 break;
         }

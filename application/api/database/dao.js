@@ -123,6 +123,41 @@ var admin = {
             }
         });
     },
+
+        GET_CONSUMPTION: function (req, res, next, _feature, callback) {
+        req.getConnection(function (err, connection) {
+            if (connection === undefined) {
+                return next(err);
+            } else {
+                connection.beginTransaction(function (err) {
+                    if (err) {
+                        return next(err);
+                    }
+                    connection.query('SELECT * FROM ' + _feature + ' WHERE user_id = ?', req.params.id, function (err, result) {
+                        callback(err, result, connection);
+                    });
+                });
+            }
+        });
+    },
+
+    PUT: function (req, res, next, _feature, callback) {
+        req.getConnection(function (err, connection) {
+            if (connection === undefined) {
+                return next(err);
+            } else {
+                connection.beginTransaction(function (err) {
+                    if (err) {
+                        return next(err);
+                    }
+                    connection.query('UPDATE ' + _feature + ' SET last_consumption = ? , date = ? WHERE user_id = ?',
+                        [parseFloat(req.body.last_consumption), new Date(req.body.date), req.params.id.toString()], function (err, result) {
+                            callback(err, result, connection);
+                        });
+                });
+            }
+        });
+    },
 };
 
 

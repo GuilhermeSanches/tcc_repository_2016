@@ -24,21 +24,15 @@ void loop() {
     timems = tmillis - ltmillis;
     double Irms = emon1.calcIrms(1480); // Calculate Irms
     double Irms2 = emon2.calcIrms(1480); // Calculate Irms
+    double kwhTemp2, kwhTemp;
+    if (Irms > 0.3 || Irms2 > 0.3) {
 
-    if (Irms > 0.2 || Irms2 > 0.2) {
-
-        if (Irms > 0.2) {
-
-            double kwhTemp = (((Irms*127.0)/1000.0) * 1.0/3600.0 * (timems/1000.0));
-            kwhTotal_Acc = kwhTotal_Acc + kwhTemp;
-
+        if (Irms > 0.3) {
+            kwhTemp = (((Irms*127.0)/1000.0) * 1.0/3600.0 * (timems/1000.0));            
         }
 
-        if (Irms2 > 0.2) {
-
-            double kwhTemp2 = (((Irms*127.0)/1000.0) * 1.0/3600.0 * (timems/1000.0));
-            kwhTotal_Acc2 = kwhTotal_Acc2 + kwhTemp2;
-
+        if (Irms2 > 0.3) {
+            kwhTemp2 = (((Irms2*127.0)/1000.0) * 1.0/3600.0 * (timems/1000.0));            
         }
 
         Serial.print("0:");
@@ -54,17 +48,7 @@ void loop() {
         Serial.print(",1:");
         Serial.print(kwhTemp2, 10);
         Serial.println("");                                         
-    }
-    
-    if (timeaux == 10) {
-
-        kwhTotal_Acc = 0.0;
-        kwhTotal_Acc2 = 0.0;
-        timeaux = 1;
-
-    }else {                              
-            timeaux++;
-      }
+    }    
 
     delay(480);
 }

@@ -34,14 +34,13 @@ var controller = {
             case 'history':
                 this.prepareHistoryToPost(req, res, next);
                 break;
-
             default:
                 break;
         }
     },
 
     prepareHistoryToPost: function (req, res, next) {
-        var body = req.body;        
+        var body = req.body;
         var newBody = [];
         var time = body.time;
         var user_id = req.params.id;
@@ -57,13 +56,14 @@ var controller = {
             delete element._id;
             delete element.data;
             delete element.sensor;
-            newBody.push(element);            
+            newBody.push(element);
         }, this);
 
         req.body = newBody;
         console.log(req.body);
         next();
-    }
+    },
+
 };
 
 exports.getController = controller;
