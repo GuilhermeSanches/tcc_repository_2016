@@ -29,7 +29,7 @@ MongoClient.connect(url, function (err, db) {
                     if (index != (lenght - 1)) {
                         var temp = element.split(":");
                         if (temp[0] == "0") {
-                            console.log(parseFloat(temp[1]));
+                            //console.log(parseFloat(temp[1]));
                         }                        
                         collection.find({ "sensor": temp[0].toString() }).toArray(function (err, result) {
                             if (err) {
